@@ -1,0 +1,6 @@
+__pychache__/
+
+*.tmp
+db.sqlite3
+media
+manage.py 
