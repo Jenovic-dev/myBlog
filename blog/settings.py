@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'ckeditor' # ajourt de ckeditor pour avoir une meilleur interface pour 
+    'ckeditor' ,# ajourt de ckeditor pour avoir une meilleur interface pour 
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -119,6 +120,7 @@ MEDIA_URL = '/media/'
 # ajout des parametre de configuration pour ckeditor
 # ajouter le chemin pour uploader les image :
 CKEDITOR_UPLOAD_PATH = "uploads/"
+STATIC_ROOT = 'static/'
 
 CKEDITOR_CONFIGS = {
 'default': {
