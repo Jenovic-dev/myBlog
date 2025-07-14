@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import pre_delete
 import os
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 STATUS = ((0, 'Draft'), (1, 'Published'))
@@ -13,7 +14,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_post")
     created_on = models.DateField(auto_now_add=True)
     update_on = models.DateField(auto_now=True)
-    content = models.TextField()
+    content = RichTextField()
     status = models.IntegerField(choices=STATUS, default=0)
     image = models.ImageField(upload_to="post_images/", null=True, blank=True)
 
