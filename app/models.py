@@ -5,13 +5,14 @@ from django.db.models.signals import pre_delete
 import os
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.html import strip_tags
 
 # Create your models here.
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_post")
     created_on = models.DateField(auto_now_add=True)
     update_on = models.DateField(auto_now=True)
@@ -19,8 +20,11 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     image = models.ImageField(upload_to="post_images/", null=True, blank=True)
 
+    def excerpt(self, length=200):
+        return strip_tags(self.content)[:length] + "..."
     class Meta:
         ordering = ['-created_on']
+        
     def __str__(self):
         return self.title
     
