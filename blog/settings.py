@@ -122,10 +122,25 @@ MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 STATIC_ROOT = 'static/'
 
+# CKEDITOR_CONFIGS = {
+# 'default': {
+#     'toolbar': 'full',
+#     'height': 300,
+#     'width': 300,
+#     },
+# }
 CKEDITOR_CONFIGS = {
-'default': {
-    'toolbar': 'full',
-    'height': 300,
-    'width': 300,
-    },
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['CodeSnippet','Image', 'Link', 'Unlink'],
+            ['NumberedList', 'BulletedList'],
+            ['RemoveFormat', 'Source'],
+        ],
+        'height': 400,
+        'width': 480,
+        'extraPlugins': 'codesnippet',
+        'codeSnippet_theme': 'monokai_sublime',  # ou un autre thème
+    }
 }
